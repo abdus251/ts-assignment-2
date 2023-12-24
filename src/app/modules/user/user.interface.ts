@@ -1,4 +1,4 @@
-import { Schema, model, connect } from 'mongoose';
+// import { Schema, model, connect } from 'mongoose';
 
 export type UserName = {
   firstName: string;
@@ -18,9 +18,9 @@ export type orders = {
 };
 
 export type hobbies = [
-  { gardening: string },
-  { traveling: string },
-  { youTubing: string },
+  { gardening?: string },
+  { traveling?: string },
+  { youTubing?: string },
 ];
 
 export type order = [

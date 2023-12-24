@@ -8,7 +8,7 @@
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "prettier": "npx prettier --write src",
+  // "prettier": "npx prettier --write src",
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",

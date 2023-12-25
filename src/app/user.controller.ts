@@ -15,7 +15,7 @@ const createUser = async (req: Request, res: Response) => {
       res.status(404).json({
         success: false,
         message: 'User not found',
-        error: error.details,
+        error: error,
       });
     }
 
@@ -24,7 +24,7 @@ const createUser = async (req: Request, res: Response) => {
       message: 'User is created successfully',
       data: result,
     });
-  } catch (err: any) {
+  } catch (err) {
     res.status(404).json({
       success: false,
       message: 'User not found',
@@ -42,7 +42,7 @@ const getAllUsers = async (req: Request, res: Response) => {
       message: 'Users are fetched successfully',
       data: result,
     });
-  } catch (err: any) {
+  } catch (err) {
     res.status(404).json({
       success: false,
       message: 'User not found',
@@ -80,7 +80,7 @@ const deleteUser = async (req: Request, res: Response) => {
       message: 'User is deleted successfully',
       data: result,
     });
-  } catch (err: any) {
+  } catch (err) {
     res.status(404).json({
       success: false,
       message: 'User not found',

@@ -33,6 +33,7 @@ export type TOrder = [
 ];
 
 export type TUser = {
+  id: string;
   userId: number;
   password: string;
   userName: TUserName;
@@ -52,6 +53,7 @@ export type TUser = {
 // for creating static
 
 export interface UserModel extends Model<TUser> {
+  // eslint-disable-next-line no-unused-vars
   isUserExists(id: string): Promise<TUser | null>;
 }
 

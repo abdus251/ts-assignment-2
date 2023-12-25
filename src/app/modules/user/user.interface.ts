@@ -1,29 +1,29 @@
-// import { Schema, model, connect } from 'mongoose';
+import { Model } from 'mongoose';
 
-export type UserName = {
+export type TUserName = {
   firstName: string;
   lastName: string;
 };
 
-export type address = {
+export type TAddress = {
   street: string;
   city: string;
   country: string;
 };
 
-export type orders = {
+export type TOrders = {
   productName: string;
   price: number;
   quantity: number;
 };
 
-export type hobbies = [
-  { gardening?: string },
-  { traveling?: string },
-  { youTubing?: string },
-];
+export type THobbies = {
+  gardening: string;
+  traveling: string;
+  youTubing: string;
+};
 
-export type order = [
+export type TOrder = [
   {
     type: string;
     productName: string;
@@ -32,9 +32,10 @@ export type order = [
   },
 ];
 
-export type User = {
+export type TUser = {
   userId: number;
-  userName: UserName;
+  password: string;
+  userName: TUserName;
   age: number;
   email: string;
 
@@ -42,8 +43,21 @@ export type User = {
     type: boolean;
     default: 'true';
   };
-
-  hobbies: hobbies;
-  address: address;
-  orders: orders;
+  hobbies: THobbies;
+  address: TAddress;
+  orders: TOrders;
+  isDeleted: boolean;
 };
+
+// for creating static
+
+export interface UserModel extends Model<TUser> {
+  isUserExists(id: string): Promise<TUser | null>;
+}
+
+// for creating instacne
+
+// export interface UserMethods  {
+//   isUserExists(id: string): Promise<TUser | null>;
+// };
+// export type UserModel = Model<TUser, Record<string, never>, UserMethods>;

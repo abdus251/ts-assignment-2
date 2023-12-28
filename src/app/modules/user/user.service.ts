@@ -1,5 +1,5 @@
-import { TUser } from './user.interface';
 import { User } from './user.model';
+import { TUser } from './user.interface';
 
 const createUserIntoDB = async (userData: TUser) => {
   if (await User.isUserExists(userData.id)) {
@@ -24,8 +24,6 @@ const getAllUsersFromDB = async () => {
 };
 
 const getSingleUserFromDB = async (id: string) => {
-  // const result = await User.findOne({ id });
-
   const result = await User.aggregate([{ $match: { id: id } }]);
   return result;
 };

@@ -120,15 +120,13 @@ userSchema.pre('find', function (next) {
   next();
 });
 
-userSchema.pre('find', function (next) {
-  this.find({ isDeleted: { $ne: true } });
-
+userSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
   next();
 });
 
-userSchema.pre('aggregate', function (next) {
-  this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
-
+userSchema.pre('findOne', function (next) {
+  this.find({ isDeleted: { $ne: true } });
   next();
 });
 
